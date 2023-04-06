@@ -23,11 +23,11 @@ import { CompanyModule } from './company/company.module';
     ConfigModule.forRoot(),
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      host: 'localhost',
+      host: 'mysql.auto-unity.kinghost.net',
       port: 3306,
-      username: 'root',
-      password: '',
-      database: 'nest',
+      username: 'autounity',
+      password: 'n2p5k1',
+      database: 'autounity',
       synchronize:true,
       autoLoadModels: true,
       define: {
