@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Budget } from '../budget.entity';
+import { Budget } from '../entitys/budget.entity';
 
 export class BudgetCreateDto {
     

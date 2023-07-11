@@ -13,7 +13,7 @@ export class BudgetServiceDto {
     readonly serviceId:number
 
     @ApiProperty()
-    readonly value:number
+    readonly value:string
 
     @ApiProperty()
     readonly nameService:string
@@ -22,7 +22,7 @@ export class BudgetServiceDto {
         this.id = budgetService.id;
         this.budgetId = budgetService.budgetId;
         this.serviceId = budgetService.serviceId;
-        this.value = budgetService.value;
+        this.value = budgetService.value.toFixed(2);
         this.nameService = budgetService.service.name;
     }
 }

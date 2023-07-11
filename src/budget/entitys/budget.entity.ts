@@ -1,6 +1,7 @@
 import { AutoIncrement, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
-import { BaseEntity } from "../base/base.entity";
-import { Vehicle } from "../vehicle/vehicle.entity";
+import { BaseEntity } from "../../base/base.entity";
+import { Vehicle } from "../../vehicle/vehicle.entity";
+import { StatusBudget } from "./statusBudget.entity";
 
 
 @Table
@@ -17,12 +18,13 @@ export class Budget  extends BaseEntity{
     })
     vehicleId:string;
 
+    @ForeignKey(() => StatusBudget)
     @Column({
-        type: DataType.STRING(1),
+        type: DataType.BIGINT,
         allowNull:false,
-        defaultValue:"P"
+        field: 'status_id',
     })
-    status:string;
+    statusId:string;
 
     @Column({
         type: DataType.STRING(1),
@@ -49,8 +51,23 @@ export class Budget  extends BaseEntity{
     })
     dateOut:string;
 
+    @Column({
+        type: DataType.STRING(1000),
+        allowNull:true, 
+    })
+    note:string;
+
+    @Column({
+        type: DataType.STRING(1000),
+        allowNull:true, 
+    })
+    event:string;
+
     @BelongsTo(() => Vehicle)
     vehicle: Vehicle;
+
+    @BelongsTo(() => StatusBudget)
+    StatusBudget: StatusBudget;
 
 
 }

@@ -8,7 +8,7 @@ export class Provider extends BaseEntity{
 
     @Column({
         type: DataType.STRING(60),
-        allowNull:true,
+        allowNull:false,
         field: 'provider_name',
     })
     providerName:string;

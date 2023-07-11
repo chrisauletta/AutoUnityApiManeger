@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "nest",
-    "host": "127.0.0.1",
+    "username": "autounity",
+    "password": "n2p5k1",
+    "database": "autounity",
+    "host": "mysql26-farm10.kinghost.net",
     "dialect": "mysql"
   },
   "test": {

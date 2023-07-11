@@ -17,17 +17,24 @@ import { HelperInterceptor } from './helper.interceptor';
 import { BudgetsPartsModule } from './budgetPart/budgetsParts.module';
 import { BudgetsServicesModule } from './budgetService/budgetsServices.module';
 import { CompanyModule } from './company/company.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import path, { join } from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      host: 'mysql.auto-unity.kinghost.net',
+      host: 'mysql26-farm10.kinghost.net',
       port: 3306,
       username: 'autounity',
       password: 'n2p5k1',
       database: 'autounity',
+      // host: 'localhost',
+      // port: 3306,
+      // username: 'root',
+      // password: '',
+      // database: 'nest',
       synchronize:true,
       autoLoadModels: true,
       define: {
@@ -37,6 +44,10 @@ import { CompanyModule } from './company/company.module';
       //   force:true
       // }
     }),
+    // ServeStaticModule.forRoot({
+    //   rootPath: '/upload', // I prefer to use resolve in your case it can be better to use path.join
+    //   serveRoot: '/upload',
+    // }),
    produtoModule,
    CompanyModule,
    userModule,

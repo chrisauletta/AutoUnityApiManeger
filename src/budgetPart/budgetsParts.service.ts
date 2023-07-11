@@ -24,12 +24,16 @@ export class BudgetsPartsService {
     return budgetPart.map(budget => new BudgetPartDto(budget));
   }
 
-  async create(budgetPart){
+  async create(budgetPart, user){
+    budgetPart.companyId = user.companyId;
+    budgetPart.usuincId = user.id;
+    budgetPart.usuincDt = new Date();
     return await this.budgetPartModel.create(budgetPart);
   }
 
-  async update(budgetPart){
-    console.log(budgetPart);
+  async update(budgetPart, user){
+    budgetPart.usualtId = user.id;
+    budgetPart.usualtDt = new Date();
     return await this.budgetPartModel.update(budgetPart, {
         where:{
             id: budgetPart.id

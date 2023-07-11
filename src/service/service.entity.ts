@@ -10,7 +10,7 @@ export class Service extends BaseEntity{
 
     @Column({
         type: DataType.STRING(60),
-        allowNull:true,
+        allowNull:false,
     })
     name:string;
 

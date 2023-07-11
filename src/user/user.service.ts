@@ -17,9 +17,8 @@ export class UsersService {
         return this.userModel.findByPk(id);
     }
 
-    async getByEmail(email: string): Promise<User>{
-        console.log(email);
-        return this.userModel.findOne({where:{email:email}});
+    async getByLogin(login: string): Promise<User>{
+        return this.userModel.findOne({where:{login:login}});
     }
 
     criar(user) {

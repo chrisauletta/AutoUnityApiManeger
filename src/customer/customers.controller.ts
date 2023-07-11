@@ -10,6 +10,7 @@ import { CustomerDto } from './dto/customer.dto';
 import { CustomerCreateDto } from './dto/customerCreate.dto';
 import { CustomerUpdateDto } from './dto/customerUpdate.dto';
 import { JwtAuthGuard } from '../auth/shared/jwt-auth.guard';
+import { Company } from '../company/company.entity';
 
 @Controller('customers')
 @ApiTags('customers')
@@ -18,6 +19,11 @@ export class CustomersController extends BaseController<Customer> {
         super(customersServices);
     }
 
+    // @Get('teste')
+    // async getProfile() {
+
+    //   return await Company.findByPk(1);
+    // }
     // @Get('teste')
     // @UseGuards(JwtAuthGuard)
     // getProfile(@User() user: any) {

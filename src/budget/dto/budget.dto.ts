@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { VehicleCreateDto } from 'src/vehicle/dto/vehicleCreate.dto';
-import { Budget } from '../budget.entity';
+import { Budget } from '../entitys/budget.entity';
 
 export class BudgetDto {
     @ApiProperty()
@@ -23,6 +23,12 @@ export class BudgetDto {
 
     @ApiProperty()
     readonly dateOut:string
+
+    @ApiProperty()
+    readonly note:string
+
+    @ApiProperty()
+    readonly event:string
 
     @ApiProperty()
     readonly vehiclePlate:string
@@ -51,15 +57,15 @@ export class BudgetDto {
         this.id = budget.id;
         this.vehicleId = budget.vehicleId;
 
-        switch (budget.status) {
-            case "P":
-                this.status = "Pendente";
-                break;
+        // switch (budget.status) {
+        //     case "P":
+        //         this.status = "Pendente";
+        //         break;
         
-            default:
-                this.status = budget.status;
-                break;
-        }
+        //     default:
+        //         this.status = budget.status;
+        //         break;
+        // }
         
         this.situation = budget.situation;
         this.km = budget.km;

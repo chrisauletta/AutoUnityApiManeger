@@ -16,7 +16,7 @@ export class BudgetPartDto {
     readonly quantity:number
 
     @ApiProperty()
-    readonly value:number
+    readonly value:string
 
     @ApiProperty()
     readonly namePart:string
@@ -26,7 +26,8 @@ export class BudgetPartDto {
         this.budgetId = budgetPart.budgetId;
         this.partId = budgetPart.partId;
         this.quantity = budgetPart.quantity;
-        this.value = budgetPart.value;
+        this.value = budgetPart.value.toFixed(2);
+
         this.namePart = budgetPart.part.name;
     }
 }

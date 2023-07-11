@@ -20,7 +20,7 @@ export class UserController {
 
     @Post('/email')
     async getUserByEmail(@Body() user): Promise<User>{
-        return this.usersService.getByEmail(user.email);
+        return this.usersService.getByLogin(user.login);
     }
 
     @Post()

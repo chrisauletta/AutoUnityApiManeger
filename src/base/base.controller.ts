@@ -12,25 +12,27 @@ export class BaseController<T>{
 	@UseGuards(JwtAuthGuard)
 	@Get()
 	@ApiResponse({ status: 200, description: 'Ok'})
-	async findAll(): Promise<T[]> {
-		return this.IBaseService.getAll()
+	async findAll(@User() user: any): Promise<T[]> {
+		return this.IBaseService.getAll(user)
 	  
 	}
 
-	// @Get(':id')
-	// @ApiResponse({ status: 200, description: 'Entity retrieved successfully.'})
-	// @ApiResponse({ status: 404, description: 'Entity does not exist'})
-	// async findById(@Param('id') id: number): Promise<T> {
-	//   return this.IBaseService.get(id)
-	// }
-
-    @Get('find')
+	@UseGuards(JwtAuthGuard)
+	@Get('find')
 	@ApiResponse({ status: 200, description: 'Ok'})
 	@ApiResponse({ status: 404, description: 'Falha na busca'})
-    findByParameter(@Query() query: FilterDto){
-        return this.IBaseService.findByParameter(query.column, query.value, query.table, query.search);
+    findByParameter(@Query() query: FilterDto, @User() user: any){
+        return this.IBaseService.findByParameter(query, user);
     }
 
+	@UseGuards(JwtAuthGuard)
+	@Get(':id')
+	@ApiResponse({ status: 200, description: 'Entity retrieved successfully.'})
+	@ApiResponse({ status: 404, description: 'Entity does not exist'})
+	async findById(@Param('id') id: number, @User() user: any): Promise<T> {
+	  return this.IBaseService.getByPk(id, user)
+	}
+	
 	@Post()
 	@UseGuards(JwtAuthGuard)
 	async create(@Body() entity: T, @User() user: any): Promise<number> {
@@ -39,11 +41,13 @@ export class BaseController<T>{
 
 	@ApiResponse({ status: 200, description: 'Entity deleted successfully.'})
 	@ApiResponse({ status: 400, description: 'Bad Request.'})
+	@UseGuards(JwtAuthGuard)
 	@Delete(':id')
 	async delete(@Param('id') id: number) {
 		return this.IBaseService.delete(id);
 	}
-
+	
+	@UseGuards(JwtAuthGuard)
 	@Put()
 	async update(@Body() entity: T): Promise<T> {
 	  return this.IBaseService.update(entity);

@@ -19,13 +19,13 @@ export class Customer extends BaseEntity{
 
     @Column({
         type: DataType.STRING(60),
-        allowNull:true, 
+        allowNull:false, 
     })
     name:string;
 
     @Column({
         type: DataType.STRING(60),
-        allowNull:false, 
+        allowNull:true, 
     })
     document:string;
 
@@ -38,7 +38,7 @@ export class Customer extends BaseEntity{
 
     @Column({
         type: DataType.STRING(60),
-        allowNull:true, 
+        allowNull:false, 
     })
     cell:string;
 

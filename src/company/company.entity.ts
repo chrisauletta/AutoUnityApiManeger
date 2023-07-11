@@ -94,4 +94,9 @@ export class Company extends Model<Company>{
     note:string;
 
 
+    @Column({
+        type: DataType.STRING(60),
+        allowNull:true, 
+    })
+    logo:string;
 }

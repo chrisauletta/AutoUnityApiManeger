@@ -1,6 +1,6 @@
 import { AutoIncrement, BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
 import { Part } from "../parts/part.entity";
-import { Budget } from "../budget/budget.entity";
+import { Budget } from "../budget/entitys/budget.entity";
 import { BaseEntity } from "../base/base.entity";
 
 @Table

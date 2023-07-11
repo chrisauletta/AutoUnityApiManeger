@@ -15,7 +15,7 @@ export class User extends BaseEntity{
         type: DataType.STRING(200),
         allowNull:false, 
     })
-    email: string;
+    login: string;
 
     @Column({
         type: DataType.STRING(500),
